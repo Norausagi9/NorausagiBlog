@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>学習アウトプット・コミュニティ</title>
+  <!-- SEO メタタグ -->
+  <meta name="description" content="アウトプットを習慣化する学習記録サイト。練習モード、タイムアタック、ランキング機能で知識共有をサポート。" />
+  <!-- Favicon -->
+  <link rel="icon" href="/blogLogo.png" type="image/x-icon" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pE6u0jI0i4kZ4Q0vPZHt+dvkmzPq4vB9e0PklR5h3P5jZg+K1Pj5g7R6RjWj3P8r+9eFf6yDzC+ZqI8x8Z1wKg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center">
+        <img src="/blogLogo.png" alt="サイトロゴ" class="w-8 h-8 mr-2" />
+        <h1 class="text-2xl font-bold">ノラ兎のウサギ小屋</h1>
+      <!-- ナビゲーション -->
+        <nav class="ml-auto space-x-4">
+            <a href="index.html" class="text-gray-600 hover:text-gray-800">ホーム</a>
+            <a href="tags.html" class="text-gray-600 hover:text-gray-800">タグ一覧</a>
+            <a href="search.html"  class="text-gray-600 hover:text-gray-800">検索</a>
+        </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8 space-y-12">
+
+    <!-- 最新記事セクション -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-b-2 border-pink-300 inline-block">
+        最新記事
+      </h2>
+      <div id="latestGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+    </section>
+
+    <!-- ランキングセクション -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-b-2 border-pink-300 inline-block">
+        人気記事ランキング
+      </h2>
+      <ol id="rankingList" class="list-decimal list-inside space-y-2"></ol>
+    </section>
+
+  </main>
+
+  <!-- 動的描画用スクリプト -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        // 1. posts.json をフェッチ
+        const res = await fetch('posts.json');
+        if (!res.ok) throw new Error(`posts.json の読み込みに失敗: ${res.status}`);
+        const posts = await res.json();
+
+        // 2. 日付降順でソート → 最新4件
+        const latest = [...posts]
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 4);
+
+        // 3. likes降順でソート → 人気上位4件
+        const ranking = [...posts]
+          .sort((a, b) => b.likes - a.likes)
+          .slice(0, 4);
+
+        // 4. コンテナ要素を取得
+        const latestGrid  = document.getElementById('latestGrid');
+        const rankingList = document.getElementById('rankingList');
+
+        // 5. 最新記事をカード形式で描画
+        latest.forEach(post => {
+          const card = document.createElement('article');
+          card.className = 'bg-white rounded-lg shadow hover:shadow-lg transition p-4';
+          card.innerHTML = `
+            <h3 class="font-medium mb-2">
+              <a href="/posts/${post.slug}.html" class="hover:underline">
+                ${post.title}
+              </a>
+            </h3>
+            <p class="text-sm text-gray-600">投稿日: ${post.date}</p>
+          `;
+          latestGrid.append(card);
+        });
+
+        // 6. 人気記事ランキングをリスト形式で描画
+        ranking.forEach(post => {
+          const li = document.createElement('li');
+          li.className = 'bg-white rounded-lg shadow p-4 flex justify-between items-center';
+          li.innerHTML = `
+            <a href="/posts/${post.slug}.html" class="font-medium hover:underline">
+              ${post.title}
+            </a>
+            <span class="text-sm text-gray-600">👍 ${post.likes}</span>
+          `;
+          rankingList.append(li);
+        });
+
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>

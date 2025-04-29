@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>記事検索 – My Learning Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Favicon -->
+  <link rel="icon" href="/blogLogo.png" type="image/x-icon" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center">
+        <img src="/blogLogo.png" alt="サイトロゴ" class="w-8 h-8 mr-3"/>
+        <h1 class="text-2xl font-bold">記事検索</h1>
+      </div>
+      <nav class="flex space-x-4">
+        <a href="index.html" class="text-gray-600 hover:text-gray-800">ホーム</a>
+        <a href="tags.html"  class="text-gray-600 hover:text-gray-800">タグ一覧</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Search Form -->
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <div class="mb-6">
+      <input
+        id="q"
+        type="text"
+        placeholder="キーワードで検索…"
+        class="w-full border rounded-lg px-4 py-2 text-base focus:ring-2 focus:ring-blue-400"
+      />
+      <button
+        id="searchBtn"
+        class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+      >
+        検索
+      </button>
+    </div>
+
+    <!-- 検索結果コンテナ -->
+    <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+  </main>
+
+  <!-- 検索ロジック -->
+  <script>
+    document.getElementById('searchBtn').addEventListener('click', async () => {
+      const q = document.getElementById('q').value.trim().toLowerCase();
+      const res = await fetch('posts.json');
+      const posts = await res.json();
+
+      // タイトル or タグにキーワードが含まれる記事をフィルタ
+      const filtered = posts.filter(p =>
+        p.title.toLowerCase().includes(q) ||
+        (p.tags || []).some(tag => tag.toLowerCase().includes(q))
+      );
+
+      const grid = document.getElementById('resultsGrid');
+      grid.innerHTML = '';
+
+      if (!filtered.length) {
+        grid.innerHTML = '<p class="text-gray-600">検索結果が見つかりませんでした。</p>';
+        return;
+      }
+
+      // カード表示
+      filtered.forEach(post => {
+        const card = document.createElement('article');
+        card.className = 'bg-white rounded-lg shadow hover:shadow-lg transition p-4';
+        card.innerHTML = `
+          <h3 class="font-medium mb-2">
+            <a href="posts/${post.slug}.html" class="hover:underline">${post.title}</a>
+          </h3>
+          <p class="text-sm text-gray-600 mb-1">投稿日: ${post.date}</p>
+          <p class="text-xs text-gray-500">タグ: ${(post.tags||[]).join(', ')}</p>
+        `;
+        grid.append(card);
+      });
+    });
+
+    // Enterキーでも検索できるように
+    document.getElementById('q').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('searchBtn').click();
+    });
+  </script>
+</body>
+</html>

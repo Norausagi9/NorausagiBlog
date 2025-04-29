@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>タグ一覧 – My Learning Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-2xl font-bold">タグ一覧</h1>
+      <!-- ナビゲーション -->
+        <nav class="flex space-x-4">
+            <a href="index.html"   class="text-gray-600 hover:text-gray-800">ホーム</a>
+            <a href="tags.html"    class="text-gray-600 hover:text-gray-800">タグ一覧</a>
+            <a href="search.html"  class="text-gray-600 hover:text-gray-800">検索</a>
+          </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <!-- タグを表示するリスト（JSで埋めます） -->
+    <ul id="tagsList" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></ul>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const res = await fetch('posts.json');
+      const posts = await res.json();
+
+      // タグごとのカウントを集計
+      const counts = {};
+      posts.forEach(p => {
+        (p.tags || []).forEach(tag => {
+          counts[tag] = (counts[tag] || 0) + 1;
+        });
+      });
+
+      // ソートして一覧に
+      const tagsList = document.getElementById('tagsList');
+      Object.keys(counts)
+        .sort()
+        .forEach(tag => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <a 
+              href="tag.html?tag=${encodeURIComponent(tag)}"
+              class="block bg-white rounded-lg shadow hover:shadow-md transition p-4 text-center"
+            >
+              <span class="font-medium">${tag}</span>
+              <p class="text-sm text-gray-600">${counts[tag]} 件</p>
+            </a>
+          `;
+          tagsList.append(li);
+        });
+    });
+  </script>
+</body>
+</html>
