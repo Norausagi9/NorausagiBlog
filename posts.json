@@ -1,5 +1,5 @@
 [
-    { "slug": "post-05-05", "title":"あいだ文字の開発手順","date":"2025-05-05","likes":110},
+    { "slug": "post-05-05", "title":"あいだ文字の開発手順","date":"2025-05-05","likes":110,"tags":["blog","development"]},
     { "slug": "post-05-01", "title": "このBlogに追加したい機能まとめ", "date": "2025-05-01", "likes": 104 ,"tags":["html","blog"]},
     { "slug": "post-howto", "title": "htmlのファイル名の決め方", "date": "2025-04-29", "likes": 100 ,"tags":["html","file"]},
     { "slug": "post-a", "title": "記事タイトルA", "date": "2025-04-27", "likes": 99 ,"tags":["test","a"]},
