@@ -1,11 +1,11 @@
 [
     { "slug": "post-05-05", "title":"あいだ文字の開発手順","date":"2025-05-05","likes":110},
     { "slug": "post-05-01", "title": "このBlogに追加したい機能まとめ", "date": "2025-05-01", "likes": 104 ,"tags":["html","blog"]},
-    { "slug": "post-howto", "title": "htmlのファイル名の決め方", "date": "2025-04-29", "likes": 80 ,"tags":["html","file"]},
-    { "slug": "post-a", "title": "記事タイトルA", "date": "2025-04-27", "likes": 123 ,"tags":["test","a"]},
+    { "slug": "post-howto", "title": "htmlのファイル名の決め方", "date": "2025-04-29", "likes": 100 ,"tags":["html","file"]},
+    { "slug": "post-a", "title": "記事タイトルA", "date": "2025-04-27", "likes": 99 ,"tags":["test","a"]},
     { "slug": "post-b", "title": "記事タイトルB", "date": "2025-04-26", "likes":  98 ,"tags":["test","b"]},
     { "slug": "post-c", "title": "記事タイトルC", "date": "2025-04-25", "likes":  76 ,"tags":["test","c"]},
     { "slug": "post-d", "title": "記事タイトルD", "date": "2025-04-24", "likes":  54 ,"tags":["test","d"]},
-    { "slug": "post-e", "title": "記事タイトルE", "date": "2025-04-23", "likes": 100 ,"tags":["test","e"]}
+    { "slug": "post-e", "title": "記事タイトルE", "date": "2025-04-23", "likes": 50 ,"tags":["test","e"]}
   ]
   
