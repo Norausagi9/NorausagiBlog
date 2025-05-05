@@ -1,4 +1,5 @@
 [
+    { "slug": "post-05-01", "title": "このBlogに追加したい機能", "date": "2025-05-01", "likes": 104 ,"tags":["html","blog"]},
     { "slug": "post-howto", "title": "htmlのファイル名の決め方", "date": "2025-04-29", "likes": 80 ,"tags":["html","file"]},
     { "slug": "post-a", "title": "記事タイトルA", "date": "2025-04-27", "likes": 123 ,"tags":["test","a"]},
     { "slug": "post-b", "title": "記事タイトルB", "date": "2025-04-26", "likes":  98 ,"tags":["test","b"]},
