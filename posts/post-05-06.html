@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZMQR9Y8R0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-BZMQR9Y8R0');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>次に作るサイトについて – ノラ兎のウサギ小屋</title>
+    <meta name="description" content="{{description}}" />
+    <link rel="icon" href="/blogLogo.png" type="image/x-icon" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-pE6u0jI0i4kZ4Q0vPZHt+dvkmzPq4vB9e0PklR5h3P5jZg+K1Pj5g7R6RjWj3P8r+9eFf6yDzC+ZqI8x8Z1wKg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- 共通ヘッダー -->
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center">
+            <img src="/blogLogo.png" alt="サイトロゴ" class="w-8 h-8 mr-2" />
+            <h1 class="text-2xl font-bold">ノラ兎のウサギ小屋</h1>
+        <!-- ナビゲーション -->
+            <nav class="ml-auto space-x-4">
+                <a href="../index.html" class="text-gray-600 hover:text-gray-800">ホーム</a>
+                <a href="../tags.html" class="text-gray-600 hover:text-gray-800">タグ一覧</a>
+                <a href="../search.html"  class="text-gray-600 hover:text-gray-800">検索</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4">
+
+        <!-- Back to Home -->
+        <div class="mb-6">
+        <button
+            onclick="location.href='/'"
+            class="inline-flex items-center text-blue-500 hover:underline"
+        >
+            <i class="fas fa-arrow-left mr-2"></i>ホームに戻る
+        </button>
+        </div>
+
+        <!-- Article Card -->
+        <article class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+        <h1 class="text-3xl font-extrabold mb-4">次に作るサイトについて</h1>
+        <p class="text-sm text-gray-500 mb-6">投稿日: 2025-05-06</p>
+
+        <!-- Article Body -->
+        <div class="prose prose-lg max-w-none">
+            <br><br>
+            <p>
+                こんにちは、のらうさぎです😆<br>
+                これまでに私は<a href="https://aida-moji.vercel.app/" class="text-pink-500 hover:text-pink-700">あいだ文字</a>と
+                このブログを作ってきました。次に作ろうと思っているのはECサイトを作ろうと考えています！<br>
+                今回の記事では、そのECサイトをどんな手順で開発を進めていくのかをまとめていきます。<br>
+                ぜひ最後まで読んでいってください！<br>
+            </p><br><br>
+            <h2 class="block bg-pink-100 text-2xl font-bold mb-4">開発フロー</h2>
+            <p>
+                1.要件定義・設計<br>
+                └─機能と比企能を整理し、アーキテクチャ図を作成する<br>
+                2.AWSの設定<br>
+                3.ネットワークとセキュリティ<br>
+                └─パブリックとプライベートサブネットや通信経路を制限する<br>
+                4.ドメイン取得<br>
+                5.フロントエンド実装(HTML/CSS/JS)<br>
+                ├─ワイヤーフレームを作り、デザインを確定してからコーディング<br>
+                └─Next.jsなどコンポーネント化して記述<br>
+                6.バックエンド構築<br>
+                └─サーバレエス、コンテナ/VMの設定<br>
+                7.データベース設計・構築<br>
+                └─SQL、プライベートサブネット内に配置して、バックエンドからのみ接続<br>
+                8.認証・会員管理<br>
+                └─SNSログインを導入<br>
+                9.決済連携<br>
+                10.CI/CDパイプライン構築<br>
+                └─Git連携し、Amplify Consoleも活用<br>
+                11.モニタリング・運用<br>
+                └─CloudWatchでログやアラーム<br>
+                12.コスト管理・最適化
+            </p><br><br>
+            <h3 class="block bg-pink-100 text-2xl font-bold mb-4">ECサイトの種類</h3>
+            <p>
+                僕自身商品を持っているというわけではないので、何も売るものがない。。。<br>
+                困りました。しかし、ECサイトは必ずしも僕自身が商品を持っている必要はないようです！<br>
+                <br>
+                ここでは、ECサイトの種類について一応紹介しておきます！<br>
+                <br>
+                1.在庫を自分で持つ方式<br>
+                ├─メリット：商品到着が早い、品質管理しやすい<br>
+                ├─デメリット：在庫リスク(売れ残り)、初期コストが高い<br>
+                └─適用例：自社製造品、自社仕入れ品を扱う小・中規模ショップ<br>
+                <br>
+                2.ドロップシッピング方式<br>
+                ├─仕組み：注文を受けたら、仕入れ先・メーカーに発注し、直接顧客に発送する<br>
+                ├─メリット：在庫を持たないので初期コストが低い/リスクが低い<br>
+                ├─デメリット：納期が長くなることがある。返品・クレーム対応が複雑。利益率は低い。<br>
+                └─技術ポイント：仕入れ先の在庫状況をAPIで取得・同期し、注文情報を自動で転送するバックエンド処理<br>
+                <br>
+                3.アフィリエイト方式<br>
+                ├─仕組み：自分のサイトで商品を紹介、訪問者がリスクから購入すると紹介料が入る<br>
+                ├─メリット：在庫・発送の手間ゼロ！初期コストはほぼ不要<br>
+                ├─デメリット：コミッション率は低い。自社ブランディングがしづらい<br>
+                └─技術ポイント：主要ASPとの連携し、リファラ情報を含むリンク生成<br>
+                <br>
+                4.プリントオンデマンド方式<br>
+                ├─仕組み：Tシャツやマグカップなど、注文が入ってからデザインを印刷・発送する<br>
+                ├─メリット：在庫不要でオリジナル商品を低リスクで展開できる<br>
+                ├─デメリット：1点当たりのコストが高い。発送から納品まで数日かかる場合あり。<br>
+                └─技術ポイント：PODサービスのAPI連携し、デザインデータ管理とプレビュー機能<br>
+                <br>
+                5.マーケットプレイス方式<br>
+                ├─仕組み：第三者出品者を募集し、自分のプラットフォーム上で販売してもらい、手数料を徴収する<br>
+                ├─メリット：自社在庫を持たずに豊富な商品ラインナップを提供できる<br>
+                ├─デメリット：出品者管理、決済・返品トラブル対応の仕組みが必要<br>
+                └─技術ポイント：出品者用ダッシュボードの開発し、決済代行/清算システムの構築<br>
+                <br>
+                今回僕が作るECサイトではドロップシッピング方式を採用しようと思います！
+            </p><br><br>
+            <h3 class="block bg-pink-100 text-2xl font-bold mb-4">まとめ</h3>
+            <p>
+                明日からGWも明け、仕事か学校が始まる方が多くいると思います。<br>
+                僕も明日から仕事です🥲<br>
+                皆さん程よく頑張りましょう🔥体調崩さないようにしましょう。<br>
+                僕は仕事中休憩がてらプログラムで、どんなコードが使えるかを考えながら明日から働こうと思ってます🤫<br>
+                <br>
+                今回も最後まで読んでいただきありがとうございます♪<br>
+                ぜひ、リアクション、コメントしていってください！<br>
+                質問などは僕の<a href="https://x.com/ry_kA5" class="text-pink-500 hover:text-pink-700">X</a>
+                にメッセージ送ってください😁<br>                
+            </p>
+        </div>
+        </article>
+
+        <script src="https://giscus.app/client.js"
+            data-repo="Norausagi9/NorausagiBlog"
+            data-repo-id="R_kgDOOhqX-A"
+            data-category="Comments"
+            data-category-id="DIC_kwDOOhqX-M4Cpltf"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="catppuccin_frappe"
+            data-lang="ja"
+            crossorigin="anonymous"
+            async>
+        </script>
+
+        <!-- Footer -->
+        <footer class="text-center text-sm text-gray-500 mb-8">
+        © 2025 ノラ兎のウサギ小屋
+        </footer>
+    </main>
+
+</body>
+</html>
