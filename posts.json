@@ -1,4 +1,5 @@
 [
+    { "slug": "post-05-06", "title":"プログラムの勉強法について","date":"2025-05-14","likes":65,"tags":["blog","development","website"]},
     { "slug": "post-05-06", "title":"次に作るサイトについて","date":"2025-05-06","likes":115,"tags":["blog","development","website"]},
     { "slug": "post-05-05", "title":"あいだ文字の開発手順","date":"2025-05-05","likes":110,"tags":["blog","development"]},
     { "slug": "post-05-01", "title": "このBlogに追加したい機能まとめ", "date": "2025-05-01", "likes": 104 ,"tags":["html","blog"]},
